@@ -1,0 +1,37 @@
+<h3 class="headerText">Add Dependents</h3>
+<hr>
+<form [formGroup]="dependentsForm">
+    <div class="form-group">
+        <label for="exampleInputEmail1">First Name:</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+        placeholder="First Name" formControlName="firstName">
+      </div>
+      <div *ngIf="dependentsForm.get('firstName').touched && dependentsForm.get('firstName').invalid && dependentsForm.get('firstName').errors" class="errorMessage">
+        Please enter First Name!
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Last Name :</label>
+        <input type="text" class="form-control" id="lastName" 
+        placeholder="Last Name" formControlName="lastName" [disabled]>
+      </div>
+      <div *ngIf="dependentsForm.get('lastName').touched && dependentsForm.get('lastName').invalid && dependentsForm.get('lastName').errors" class="errorMessage">
+        Please enter Last Name!
+      </div>
+      <div class="form-group">
+          <label for="exampleInputEmail1">Date of Birth:</label>
+          <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="dob" 
+          placeholder="Enter dob" formControlName="dob" [disabled]>
+      </div>
+      <div *ngIf="dependentsForm.get('dob').touched && dependentsForm.get('dob').invalid && dependentsForm.get('dob').errors && dependentsForm.get('dob').errors['dateInvalid']" class="errorMessage">
+        Invalid Date! Can not select date from future!
+      </div>
+      <div *ngIf="dependentsForm.get('dob').touched && dependentsForm.get('dob').invalid && dependentsForm.get('dob').errors" class="errorMessage">
+        Invalid Date! 
+      </div>
+      <div style="margin-top: 5%;">
+        <button type="submit" class="btn btn-success" [disabled]="!dependentsForm.valid" (click)="onAddDependent()">Add Dependent</button>
+      </div>
+      <div *ngIf="message != ''" class="twoTopMargin" style="margin-top: 5%;" [ngClass]="message == 'Exception occurred! Please try later!' ? 'errorMessage' : 'successMessage'">
+        {{message}}
+      </div>
+</form>

@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-bar">
+        <span class="navbar-toggler-icon">&#9776;</span>
+    </button> -->
+
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand">InsuranceApp</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navigation-bar">
+            <ul class="nav navbar-nav">
+                <li><a (click)="onClailmsSubmitClick('submitClaims')" *ngIf="loggedIn">Submit Claims</a></li>
+                <li><a (click)="onClailmsSubmitClick('addDependents')" *ngIf="loggedIn">Add Dependents</a></li>
+                <li><a (click)="onClailmsSubmitClick('getDependent')" *ngIf="loggedIn">Member/Dependent Details</a></li>
+                <li><a (click)="onClailmsSubmitClick('updateMember')" *ngIf="loggedIn">Update Member Details</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="loggedIn" class="logOutButton"><a (click)="onLogOut()">Logout</a></li>
+            </ul>
+        </div> 
+
+    </div>
+</nav>
+<div *ngIf="message != ''" class="errorMessage">
+    {{message}}
+</div>
+
+

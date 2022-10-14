@@ -1,0 +1,107 @@
+<h3 class="headerText">Claim Submission Form</h3>
+<hr>
+<form [formGroup]="claimsForm" *ngIf="showClaims; else donotShowClaims">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Member ID:</label>
+        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+        placeholder="Member ID" formControlName="memberID">
+    </div>
+    <div *ngIf="claimsForm.get('memberID').touched && claimsForm.get('memberID').invalid && claimsForm.get('memberID').errors" class="errorMessage">
+        Please enter valid 6 digit member id!!
+      </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">First Name:</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+      placeholder="First Name" formControlName="firstName">
+    </div>
+    <div *ngIf="claimsForm.get('firstName').touched && claimsForm.get('firstName').invalid && claimsForm.get('firstName').errors" class="errorMessage">
+        Please enter First Name!!
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Last Name :</label>
+      <input type="text" class="form-control" id="lastName" 
+      placeholder="Last Name" formControlName="lastName">
+    </div>
+    <div *ngIf="claimsForm.get('lastName').touched && claimsForm.get('lastName').invalid && claimsForm.get('lastName').errors" class="errorMessage">
+        Please enter Last Name!!
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Date of Birth:</label>
+        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="dob" 
+        placeholder="Enter dob" formControlName="dob">
+    </div>
+    <div *ngIf="claimsForm.get('dob').touched && claimsForm.get('dob').invalid && claimsForm.get('dob').errors" class="errorMessage">
+        Invalid Date!!
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Date of Admission :</label>
+        <input type="date" class="form-control" id="exampleInputPassword1" 
+        placeholder="Date of Admission" formControlName="dateOfAdmission">
+    </div>
+    <div *ngIf="claimsForm.get('dateOfAdmission').touched && claimsForm.get('dateOfAdmission').invalid && claimsForm.get('dateOfAdmission').errors" class="errorMessage">
+        Please enter valid Date of Admission!! Date of Admission should be before Date of Discharge!!
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Date of Discharge :</label>
+        <input type="date" class="form-control" id="exampleInputPassword1" 
+        placeholder="Date of Discharge" formControlName="dateOfDischarge">
+    </div>
+    <div *ngIf="claimsForm.get('dateOfDischarge').touched && claimsForm.get('dateOfDischarge').invalid && claimsForm.get('dateOfDischarge').errors" class="errorMessage">
+        Please enter valid Date of Discharge!! Date of Discharge should be after Date of Admission!!
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Provider Name :</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+        placeholder="Enter Email" formControlName="providerName">
+    </div>
+    <div *ngIf="claimsForm.get('providerName').touched && claimsForm.get('providerName').invalid && claimsForm.get('providerName').errors" class="errorMessage">
+        Please enter valid Provider Name!!
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Total Bill Amount :</label>
+        <input type="number" class="form-control" id="exampleInputPassword1" 
+        placeholder="Password" formControlName="totalBillAmount">
+    </div>
+    <div *ngIf="claimsForm.get('totalBillAmount').touched && claimsForm.get('totalBillAmount').invalid && claimsForm.get('totalBillAmount').errors" class="errorMessage">
+        Please enter valid Total Bill Amount!!
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!claimsForm.valid" (click)="onClaimsSubmit()">Submit Claim</button>
+    <div *ngIf="message != ''" class="twoTopMargin" style="margin-top: 5%;" [ngClass]="message == 'Exception occurred! Please try later!' ? 'errorMessage' : 'successMessage'">
+        {{message}}
+    </div>
+</form>
+<ng-template #donotShowClaims>
+    Claims have already been submitted!
+    <div style="margin-top: 14%;">
+        <h4>Claims Details</h4>
+        <hr>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Claim ID:</label>
+            {{cliamsDetails.claimsID}}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">First Name:</label>
+            {{cliamsDetails.firstName}}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Last Name:</label>
+            {{cliamsDetails.lastName}}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Date Of Admission:</label>
+            {{cliamsDetails.dateOfAdmission | date}}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Date of Discharge:</label>
+            {{cliamsDetails.dateOfDischarge | date}}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Provider Name:</label>
+            {{cliamsDetails.providerName}}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Total Bill Amount:</label>
+            {{cliamsDetails.totalBillAmount}}
+        </div>
+    </div>
+</ng-template>

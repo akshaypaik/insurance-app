@@ -1,0 +1,14 @@
+.twoTopMargin{
+    margin-top: 2%;
+}
+
+.loginFormStyle{
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+hr{
+    color: black;
+}

@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+input.ng-valid.ng-touched{
+    border: 1px solid green;
+}
+
+.errorMessage{
+    color: red;
+    margin-bottom: 2%;
+}
+
+.successMessage{
+    color: green;
+    margin-bottom: 2%;
+}
+
+a{
+    cursor: pointer;
+}
+
+.modifiedMessage{
+    color: dodgerblue;
+    margin-bottom: 2%;
+}
+
+.headerText{
+    padding: 20px;
+    background-color: dodgerblue;
+}
+
+/* body{
+    background: url(../src/assets/stars-bg.jpg);
+    background-size: cover;
+    height: 100%;
+} */

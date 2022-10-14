@@ -1,0 +1,73 @@
+<h3 class="headerText">Member and Dependent Details</h3>
+<form [formGroup]="claimsForm">
+    <!-- <h5>To get Dependent details Please provide Member/Dependent ID</h5>
+    <div class="form-group">
+      <label for="exampleInputEmail1" style="margin-top: 5%;">Member/Dependent ID :</label>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+          placeholder="Member ID" formControlName="memberID">
+          <div *ngIf="claimsForm.get('memberID').touched && claimsForm.get('memberID').invalid && claimsForm.get('memberID').errors" class="errorMessage">
+            Please enter valid 6 digit member id!
+          </div>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-primary" [disabled]="!claimsForm.valid" (click)="onGetDependents()">Get Details</button>
+        </div>
+      </div>
+    </div> -->
+
+    <div >
+      <hr>
+      <h3>Member Profile :</h3>
+      <hr>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Member ID:</label>
+        {{user.memberID}}
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">First Name:</label>
+        {{user.firstName}}
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Last Name :</label>
+        {{user.lastName}}
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Date of Birth:</label>
+        {{user.dateOfBirth | date}}
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">PAN Number:</label>
+        {{user.panNumber}}
+      </div>
+      <hr>
+      <h3> List of Dependents : </h3>
+      <hr>
+      <div *ngIf="showDependentDetails; else noDependent">
+        <div *ngFor="let dependent of dependents; let i = index">
+          <h5> <b> Dependent {{i+1}} : </b> </h5>
+          <div class="form-group">
+            <label for="exampleInputEmail1">First Name:</label>
+            {{dependent.firstName}}
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Last Name :</label>
+            {{dependent.lastName}}
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Date of Birth:</label>
+            {{dependent.dateOfBirth | date}}
+          </div>
+          <hr>
+        </div>
+      </div>
+      <ng-template #noDependent>
+        <h6>No Dependents Found. Please add dependent using "Add Dependent" option!</h6>
+      </ng-template>
+     
+    </div>
+
+</form>
+
+

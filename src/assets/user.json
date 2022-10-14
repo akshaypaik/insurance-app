@@ -1,0 +1,40 @@
+{
+        "username":"akshay@gmail.com",
+        "firstName": "Akshay",
+        "lastName": "Pai",
+        "dateOfBirth": "1995-03-12",
+        "panNumber": "ASDRC1562F",
+        "_token": "abc123",
+        "memberID": 123456,
+        "email":"akshay@gmail.com",
+        "phoneNumber":"8854236542",
+        "address": "mantri apartments, sarjapur road, bangalore",
+        "msgModel":{
+            "statusCode": 0,
+            "statusMessage": "success"
+        },
+        "dependentList": [
+            {
+                "dependents":[
+                    {
+                        "firstName": "Rajiv",
+                        "lastName": "Ravishankar",
+                        "dateOfBirth": "1990-05-24"
+                    },
+                    {
+                        "firstName": "Deepika",
+                        "lastName": "Suresh",
+                        "dateOfBirth": "1968-04-13"
+                            
+                    }
+                ],
+                "member":{
+                    "firstName": "Akshay",
+                    "lastName": "Pai",
+                    "dateOfBirth": "1995-03-12",
+                    "pan": "ASDRC1562F"
+                }
+                
+            }
+        ]
+}

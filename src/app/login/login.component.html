@@ -1,0 +1,123 @@
+<div class="loginFormStyle">
+    <div *ngIf="loginPage; else registerSelected">
+        <h3>Login</h3>
+        <hr>
+        <form [formGroup]="loginForm">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email ID :</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+              placeholder="Enter email" formControlName="email">
+            </div>
+            <div *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid && loginForm.get('email').errors" class="errorMessage">
+                Please enter valid email address
+            </div>
+            <div class="form-group twoTopMargin">
+              <label for="exampleInputPassword1">Password :</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" 
+              placeholder="Password" formControlName="password"> <!--minlength="8"-->
+            </div>
+            <div *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid && loginForm.get('password').errors" class="errorMessage">
+                Please enter valid password
+            </div>
+            <div style="margin-top: 5%;">
+                <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid" (click)="onLoginSubmit()">Submit</button>
+                <button type="submit" class="btn btn-danger" style="margin-left: 2%;" (click)="onRegister()">Register</button>
+            </div>
+            <div *ngIf="message != ''" class="twoTopMargin" [ngClass]="{'errorMessage': message == 'Invalid Credentials', 'successMessage': message== 'Logged In'}">
+                {{message}}
+            </div>
+        </form>
+    </div>
+    <ng-template #registerSelected>
+        <form [formGroup]="registerForm">
+            <h3>Register</h3>
+            <hr>
+            <div class="form-group">
+              <label for="exampleInputEmail1">First Name:</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+              placeholder="Enter email" formControlName="firstName">
+            </div>
+            <div *ngIf="registerForm.get('firstName').touched && registerForm.get('firstName').invalid && registerForm.get('firstName').errors" class="errorMessage">
+                Please enter First Name!
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Last Name :</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" 
+              placeholder="Password" formControlName="lastName">
+            </div>
+            <div *ngIf="registerForm.get('lastName').touched && registerForm.get('lastName').invalid && registerForm.get('lastName').errors" class="errorMessage">
+                Please enter Last Name!
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Date of Birth:</label>
+                <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                placeholder="Enter dob" formControlName="dob">
+            </div>
+            <div *ngIf="registerForm.get('dob').touched && registerForm.get('dob').invalid && registerForm.get('dob').errors && registerForm.get('dob').errors['dateInvalid']" class="errorMessage">
+                Invalid Date! Can not select date from future!
+            </div>
+            <div *ngIf="registerForm.get('dob').touched && registerForm.get('dob').invalid && registerForm.get('dob').errors && registerForm.get('dob').errors['ageLimit']" class="errorMessage">
+                Age should be more than 18 years!
+            </div>
+            <div *ngIf="registerForm.get('dob').touched && registerForm.get('dob').invalid && registerForm.get('dob').errors" class="errorMessage">
+                Invalid Date! 
+              </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Phone Number :</label>
+                <input type="number" class="form-control" id="exampleInputPassword1" 
+                placeholder="Mobile Number" formControlName="phoneNumber">
+            </div>
+            <div *ngIf="registerForm.get('phoneNumber').touched && registerForm.get('phoneNumber').invalid && registerForm.get('phoneNumber').errors" class="errorMessage">
+                Please enter valid phone number
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">PAN Number :</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" 
+                placeholder="PAN Number" formControlName="pan" oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div *ngIf="registerForm.get('pan').touched && registerForm.get('pan').invalid && registerForm.get('pan').errors" class="errorMessage">
+                Please enter valid PAN number
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Address :</label>
+                <input type="textarea" class="form-control" id="exampleInputPassword1" 
+                placeholder="Address" formControlName="address">
+            </div>
+            <div *ngIf="registerForm.get('address').touched && registerForm.get('address').invalid && registerForm.get('address').errors" class="errorMessage">
+                Please enter address
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email ID :</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                placeholder="Enter Email" formControlName="email">
+            </div>
+            <div *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid && registerForm.get('email').errors" class="errorMessage">
+                Please enter valid Email ID
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password :</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" 
+                placeholder="Password" formControlName="password">
+            </div>
+            <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid && registerForm.get('password').errors" class="errorMessage">
+                Please enter valid Password with one Uppercase, one special character and one numeric!!
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Confirm Password :</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" 
+                placeholder="Confirm Password" formControlName="confirmPassword">
+            </div>
+            <div *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').invalid && registerForm.get('confirmPassword').errors" class="errorMessage">
+                Password and Confirm Password doesnot match!!!
+            </div>
+            <div style="margin-top: 5%;">
+                <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid" (click)="onRegisterSubmit()">Submit</button>
+                <button type="submit" class="btn btn-danger" style="margin-left: 2%;" (click)="backToLogin()">Back to Login</button>
+            </div>
+            <div *ngIf="message != ''" class="twoTopMargin" [ngClass]="message == 'Failed to registered due to Exception. Please try again later!' ? 'errorMessage' : 'successMessage'">
+                {{message}}
+            </div>
+        </form>
+    </ng-template>
+</div>
+

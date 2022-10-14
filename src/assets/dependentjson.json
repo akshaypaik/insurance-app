@@ -1,0 +1,24 @@
+[
+    {
+        "dependents":[
+            {
+                "firstName": "Rajiv",
+                "lastName": "Ravishankar",
+                "dateOfBirth": "25-05-1990"
+            },
+            {
+                "firstName": "Deepika",
+                "lastName": "Suresh",
+                "dateOfBirth": "12-08-1995"
+                    
+            }
+        ],
+        "member":{
+            "firstName": "Akshay",
+            "lastName": "Pai",
+            "dateOfBirth": "12-03-1995",
+            "pan": "ABDCF7451R"
+        }
+        
+    }
+]
